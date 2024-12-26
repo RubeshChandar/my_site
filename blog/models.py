@@ -23,7 +23,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=150)
     excerpt = models.CharField(max_length=200)
-    image_name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="posts", null=True)
     date = models.DateField(auto_now=True)
     # I dont need the db_index here because slugfield and unique ensures that it's created
     slug = models.SlugField(unique=True, db_index=True, null=False)
