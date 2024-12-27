@@ -32,9 +32,20 @@
             Last updated on <time>{{post.date | date:"d M Y"}}</time>
         </div>
     </article>
+<div id="read-later">
+    <form action="{% url "read-later" %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" value="{{post.id}}" name="post_id">
+        <button>
+            {% if saved_for_later %}
+                Remove from Read Later list
+            {% else %}
+                Read Later
+            {% endif %}
+        </button>
+    </form>
+</div>
 </section>
-
-
 
 <main>
     {{post.content | linebreaks}}
